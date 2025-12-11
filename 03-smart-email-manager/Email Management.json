@@ -1,0 +1,279 @@
+{
+  "name": "Email Management",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f6c1bbbe-7acc-40d5-a01b-6dc8a9dc584d",
+      "name": "Gmail Trigger",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "notesInFlow": false,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "mpW07fGTNLyVJzws",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.text }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Sponsorship",
+              "description": "Sponsorship emails are paid messages that appear in someone else’s email newsletter. You pay another company to show your ad or message to their email subscribers."
+            },
+            {
+              "category": "High Priority",
+              "description": "They are the most important emails that should be read or replied to right away — like deadlines, meeting updates, client requests, or alerts"
+            },
+            {
+              "category": "Test Email",
+              "description": "Test emails are emails you send to yourself first to check if everything looks and works right before sending them to others."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "6b9a83d6-59ba-49c1-86fb-ccd4d893b244",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        296,
+        256
+      ],
+      "id": "e4343c8a-c337-428a-97b2-4bd5588a6f6a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "W8oWOJyVjf2BPCOf",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an email assistant for a YouTuber named [Name].\nYour job is to respond to the high-priority email below.\n\nRead the email carefully and understand the sender’s main point or request.\nIdentify the urgency — respond promptly and professionally since it’s high priority.\nAcknowledge the sender’s concern at the start (e.g., “Thank you for your message” or “I understand this is urgent”).\nProvide a clear and direct answer to their question or request — no unnecessary details.\nUse a polite and professional tone.\nConfirm any next steps or actions you’ll take.\nEnd with appreciation or reassurance (e.g., “I’ll get this done as soon as possible” or “Please let me know if you need anything else.”)\n\nThe email to respond to is:\n{{ $json.text }}",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        576,
+        -96
+      ],
+      "id": "ddfa1632-969d-480a-883c-6b575cb194af",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "W8oWOJyVjf2BPCOf",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.message.content.response.subject }}",
+        "message": "={{ $json.message.content.response.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        928,
+        -96
+      ],
+      "id": "515b125d-e4a1-4bca-8f36-747d32dd3285",
+      "name": "Create a draft",
+      "webhookId": "WEBHOOK-ID-PLACEHOLDER",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "mpW07fGTNLyVJzws",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an assistant, do this,\nRecognize that this is a test email — it’s not a real inquiry, just a message to check if the email system or workflow is working.\n\nAdd subject to the email\n\nAcknowledge receipt of the test email politely.\n\nConfirm that everything is working fine (for example: “Your test email was received successfully.”).\n\nKeep the response short and professional.\n\nEnd with a friendly closing, such as “Have a great day!” or “Let me know if you need me to test anything else.”\n{{ $json.text }}\n",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        576,
+        96
+      ],
+      "id": "cc58c7c3-ed19-44e6-a521-716016c17000",
+      "name": "Message a model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "W8oWOJyVjf2BPCOf",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.message.content.subject }}",
+        "message": "={{ $json.message.content.response }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        928,
+        96
+      ],
+      "id": "16f61967-a562-4d62-bbc4-de74554753bb",
+      "name": "Create a draft1",
+      "webhookId": "WEBHOOK-ID-PLACEHOLDER",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "mpW07fGTNLyVJzws",
+          "name": "Gmail account 3"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Create a draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Create a draft1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
