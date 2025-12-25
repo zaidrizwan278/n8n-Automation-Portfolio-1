@@ -11,7 +11,7 @@
         -384,
         -16
       ],
-      "id": "72df4d9f-56f4-475b-a657-eab9e580ddef",
+      "id": "ID here",
       "name": "When chat message received",
       "webhookId": "WEBHOOK-ID-PLACEHOLDER"
     },
@@ -25,7 +25,7 @@
         -112,
         -16
       ],
-      "id": "72b35bdb-acf1-42ca-98f4-4a3e6fbebe74",
+      "id": "ID here",
       "name": "AI Agent"
     },
     {
@@ -36,7 +36,7 @@
         -32,
         208
       ],
-      "id": "003903d9-d823-48b0-b1f7-4346f141527f",
+      "id": "ID here",
       "name": "Simple Memory"
     },
     {
@@ -53,12 +53,12 @@
         96,
         208
       ],
-      "id": "2f827e58-3866-47a7-a827-e0fe677d627b",
+      "id": "ID here",
       "name": "Send a message in Gmail",
       "webhookId": "WEBHOOK-ID-PLACEHOLDER",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -73,11 +73,11 @@
         -160,
         208
       ],
-      "id": "61efbdb4-2192-46ce-beb0-21a4c7b71bb5",
+      "id": "ID here",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "C1hvetoYDIFFauMZ",
+          "id": "ID here",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -138,11 +138,11 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "ac3e5623-f8e6-406b-a75a-fb663135e7c7",
+  "versionId": "ID here",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+    "instanceId": "ID here"
   },
-  "id": "VN2IMMdffDDXj8Ox",
+  "id": "ID here",
   "tags": []
 }
