@@ -20,11 +20,11 @@
         -560,
         208
       ],
-      "id": "81e8a1e7-9e0b-42c1-9528-afc291ce8eef",
+      "id": "ID here",
       "name": "Gmail Trigger",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -58,7 +58,7 @@
         -336,
         208
       ],
-      "id": "039ee657-62bb-47aa-900b-eadd21b68b5b",
+      "id": "ID here",
       "name": "Text Classifier"
     },
     {
@@ -78,11 +78,11 @@
         -264,
         496
       ],
-      "id": "862d100d-be1d-44dc-b360-c72af380cc8d",
+      "id": "ID here",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -121,11 +121,11 @@
         16,
         -80
       ],
-      "id": "b41b22e9-bd48-430f-9798-8dedd0c013c0",
+      "id": "ID here",
       "name": "Brand Deals",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -164,11 +164,11 @@
         16,
         112
       ],
-      "id": "e798f103-9a9d-4a10-9ce8-1eeb4687dde5",
+      "id": "ID here",
       "name": "Sponsorships",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -207,11 +207,11 @@
         16,
         304
       ],
-      "id": "d1040a99-7a88-4a92-8f94-2d5d39175789",
+      "id": "ID here",
       "name": "High Priority",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -229,12 +229,12 @@
         368,
         -80
       ],
-      "id": "c6a420ae-6659-4b1b-a62e-2459608d7cc8",
+      "id": "ID here",
       "name": "Brand Deal Reply Draft",
-      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "webhookId": "Webhook ID",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -252,12 +252,12 @@
         368,
         112
       ],
-      "id": "f89daae2-0403-4c18-a030-3b9ed43a547a",
+      "id": "ID here",
       "name": "Sponsorship Reply Draft",
-      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "webhookId": "Webhook ID",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -275,12 +275,12 @@
         368,
         304
       ],
-      "id": "a27a679f-f6fd-4f15-81f4-fea4fa6c5369",
+      "id": "ID here",
       "name": "High Priority Reply Draft",
-      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "webhookId": "webhook id",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -290,7 +290,7 @@
         "operation": "addLabels",
         "messageId": "={{ $('Gmail Trigger').item.json.id }}",
         "labelIds": [
-          "Label_4967769560235813404"
+          "Label_ID"
         ]
       },
       "type": "n8n-nodes-base.gmail",
@@ -299,12 +299,12 @@
         80,
         496
       ],
-      "id": "de868893-e359-4cbc-b814-4fc8b3bec57f",
+      "id": "ID here",
       "name": "Add label to message",
-      "webhookId": "c07f6b3e-bb7a-411c-b177-0a41250fee84",
+      "webhookId": "Webhook id",
       "credentials": {
         "gmailOAuth2": {
-          "id": "2eHIrAte18hBwnDh",
+          "id": "ID here",
           "name": "Gmail account"
         }
       }
@@ -404,11 +404,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "597d2845-0150-4b15-a61d-458c02b4317d",
+  "versionId": "ID here",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+    "instanceId": "ID here"
   },
-  "id": "XgyVzdahmhOe4TfT",
+  "id": "ID here",
   "tags": []
 }
