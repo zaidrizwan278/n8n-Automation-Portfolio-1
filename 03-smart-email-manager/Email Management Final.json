@@ -1,0 +1,414 @@
+{
+  "name": "Email Management",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -560,
+        208
+      ],
+      "id": "81e8a1e7-9e0b-42c1-9528-afc291ce8eef",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2eHIrAte18hBwnDh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.text }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Brand Deals",
+              "description": "Brand deal emails are specific collaboration proposals between a creator (like an influencer or artist) and a brand to promote a product or service.  To drive sales or specific engagement through a creative partnership.  These are usually more \"hands-on\" than general sponsorships, involving specific deliverables like a dedicated video review, social media posts, or the use of custom discount codes."
+            },
+            {
+              "category": "Sponsorship",
+              "description": "Sponsorship emails are formal business communications where a company (the sponsor) offers financial or material support to an individual or organization in exchange for brand exposure.  To associate the brand with a specific person, event, or piece of content.  These often involve \"presented by\" or \"powered by\" acknowledgments and focus on broad brand awareness."
+            },
+            {
+              "category": "High Priority",
+              "description": "High priority emails are messages that require immediate attention or action. These are identified through:  Urgency: Time-sensitive tasks, deadlines, or security alerts.  Importance: Messages from frequent contacts or specific individuals you’ve \"starred\" or marked as important. "
+            }
+          ]
+        },
+        "options": {
+          "fallback": "other"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        -336,
+        208
+      ],
+      "id": "039ee657-62bb-47aa-900b-eadd21b68b5b",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -264,
+        496
+      ],
+      "id": "862d100d-be1d-44dc-b360-c72af380cc8d",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "0njJdKZHbMLlNGKt",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Role:\nYou are an email assistant handling inbound brand deal inquiries.\n\nObjective:\nRespond professionally, positively, and commercially while protecting the creator’s value.\n\nGuidelines:\n\nAlways acknowledge the brand’s interest politely.\n\nMaintain a confident but cooperative tone.\n\nDo not commit to pricing, timelines, or deliverables unless explicitly provided.\n\nAsk for missing key details if not included.\n\nRequired Information to Check & Request (if missing):\n\nCampaign objective\n\nPlatform(s) involved\n\nContent type (post, reel, video, story, etc.)\n\nTimeline / deadline\n\nBudget range\n\nUsage rights / exclusivity\n\nResponse Structure:\n\nThank the brand for reaching out\n\nExpress interest and alignment (if relevant)\n\nRequest missing campaign details (clearly listed)\n\nMention openness to discuss collaboration\n\nClose professionally\n\nTone:\nProfessional, confident, brand-safe, concise\n\nThe email to respond to is:\n {{ $json.text }}"
+            },
+            {
+              "content": "IMPORTANT: You must respond ONLY in a valid JSON format. Do not include any conversational text before or after the JSON. Use this structure: { \"subject\": \"The generated subject line here\", \"body\": \"The generated email body text here\" }"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        -80
+      ],
+      "id": "b41b22e9-bd48-430f-9798-8dedd0c013c0",
+      "name": "Brand Deals",
+      "credentials": {
+        "openAiApi": {
+          "id": "0njJdKZHbMLlNGKt",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Role:\nYou are an assistant managing sponsorship inquiries for a creator/business.\n\nObjective:\nQualify the sponsorship opportunity while maintaining exclusivity and value positioning.\n\nGuidelines:\n\nTreat sponsorships as higher-value, long-term collaborations.\n\nEmphasize audience relevance and brand fit.\n\nAvoid confirming acceptance without review.\n\nKeep responses strategic, not transactional.\n\nKey Details to Confirm:\n\nSponsorship duration\n\nBrand exclusivity requirements\n\nDeliverables & frequency\n\nPerformance expectations (KPIs, metrics)\n\nCompensation structure (flat fee, CPM, affiliate, etc.)\n\nContract and payment terms\n\nResponse Structure:\n\nAppreciation for considering sponsorship\n\nBrief mention of audience relevance\n\nRequest detailed sponsorship proposal\n\nIndicate next steps (review, call, proposal)\n\nProfessional sign-off\n\nTone:\nPremium, strategic, polite, assertive\n\nThe email to respond to is:\n {{ $json.text }}"
+            },
+            {
+              "content": "IMPORTANT: You must respond ONLY in a valid JSON format. Do not include any conversational text before or after the JSON. Use this structure: { \"subject\": \"The generated subject line here\", \"body\": \"The generated email body text here\" }"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        112
+      ],
+      "id": "e798f103-9a9d-4a10-9ce8-1eeb4687dde5",
+      "name": "Sponsorships",
+      "credentials": {
+        "openAiApi": {
+          "id": "0njJdKZHbMLlNGKt",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Role:\nYou are an executive-level email assistant handling urgent or high-importance messages.\n\nObjective:\nRespond quickly, clearly, and decisively while minimizing back-and-forth.\n\nGuidelines:\n\nAcknowledge urgency immediately.\n\nBe direct and unambiguous.\n\nAddress the core issue first.\n\nIf action is required, clearly state next steps or decisions.\n\nIf information is missing, request it concisely.\n\nResponse Structure:\n\nImmediate acknowledgment\n\nClear response or decision (if possible)\n\nExplicit next steps or requirements\n\nTimeline or deadline reference (if applicable)\n\nTone:\nDirect, professional, calm, authoritative\n\nThe email to respond to is:\n {{ $json.text }}"
+            },
+            {
+              "content": "IMPORTANT: You must respond ONLY in a valid JSON format. Do not include any conversational text before or after the JSON. Use this structure: { \"subject\": \"The generated subject line here\", \"body\": \"The generated email body text here\" }"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        304
+      ],
+      "id": "d1040a99-7a88-4a92-8f94-2d5d39175789",
+      "name": "High Priority",
+      "credentials": {
+        "openAiApi": {
+          "id": "0njJdKZHbMLlNGKt",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.output[0].content[0].text.subject }}",
+        "message": "={{ $json.output[0].content[0].text.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        -80
+      ],
+      "id": "c6a420ae-6659-4b1b-a62e-2459608d7cc8",
+      "name": "Brand Deal Reply Draft",
+      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2eHIrAte18hBwnDh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.output[0].content[0].text.subject }}",
+        "message": "={{ $json.output[0].content[0].text.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        112
+      ],
+      "id": "f89daae2-0403-4c18-a030-3b9ed43a547a",
+      "name": "Sponsorship Reply Draft",
+      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2eHIrAte18hBwnDh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.output[0].content[0].text.subject }}",
+        "message": "={{ $json.output[0].content[0].text.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        304
+      ],
+      "id": "a27a679f-f6fd-4f15-81f4-fea4fa6c5369",
+      "name": "High Priority Reply Draft",
+      "webhookId": "973ac535-c022-453f-9404-e9612a107dbd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2eHIrAte18hBwnDh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_4967769560235813404"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        496
+      ],
+      "id": "de868893-e359-4cbc-b814-4fc8b3bec57f",
+      "name": "Add label to message",
+      "webhookId": "c07f6b3e-bb7a-411c-b177-0a41250fee84",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2eHIrAte18hBwnDh",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Brand Deals",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sponsorships",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "High Priority",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label to message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brand Deals": {
+      "main": [
+        [
+          {
+            "node": "Brand Deal Reply Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sponsorships": {
+      "main": [
+        [
+          {
+            "node": "Sponsorship Reply Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High Priority": {
+      "main": [
+        [
+          {
+            "node": "High Priority Reply Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "597d2845-0150-4b15-a61d-458c02b4317d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+  },
+  "id": "XgyVzdahmhOe4TfT",
+  "tags": []
+}
