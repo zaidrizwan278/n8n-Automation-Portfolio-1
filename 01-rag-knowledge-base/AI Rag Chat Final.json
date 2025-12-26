@@ -11,7 +11,7 @@
         0,
         0
       ],
-      "id": "5e69346b-e7f3-4d06-8119-8cc964f5020e",
+      "id": "ID here",
       "name": "When chat message received",
       "webhookId": "WEBHOOK-ID-PLACEHOLDER"
     },
@@ -27,7 +27,7 @@
         280,
         0
       ],
-      "id": "8cad5c4d-12ad-415b-b2e4-34f78a5610e9",
+      "id": "ID here",
       "name": "AI Agent"
     },
     {
@@ -48,11 +48,11 @@
         224,
         224
       ],
-      "id": "847c8ffd-ee22-4eeb-97ca-d2f83d6c1bba",
+      "id": "ID here",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -65,7 +65,7 @@
         352,
         224
       ],
-      "id": "b82d5909-5eb2-44b9-8201-972c6c7f8377",
+      "id": "ID here",
       "name": "Simple Memory"
     },
     {
@@ -88,11 +88,11 @@
         480,
         224
       ],
-      "id": "10c5294f-4598-4be4-a9ef-b420d049047d",
+      "id": "ID here",
       "name": "Pinecone Vector Store",
       "credentials": {
         "pineconeApi": {
-          "id": "AoVbSsv1W8NMPwZO",
+          "id": "ID here",
           "name": "PineconeApi account"
         }
       }
@@ -107,11 +107,11 @@
         560,
         432
       ],
-      "id": "f42abe44-359f-408c-99d4-0058ebe985cc",
+      "id": "ID here",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -179,11 +179,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "b1541287-7401-4e98-bf7d-507a575bfdb9",
+  "versionId": "ID here",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+    "instanceId": "ID here"
   },
-  "id": "CpadI1yrJWB8LlZh",
+  "id": "ID here",
   "tags": []
 }
