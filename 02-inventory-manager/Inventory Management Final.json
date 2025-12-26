@@ -13,7 +13,7 @@
         0,
         0
       ],
-      "id": "56a398fb-f3ae-4569-9fc8-beba466aca6e",
+      "id": "ID here",
       "name": "When chat message received",
       "webhookId": "WEBHOOK-ID-PLACEHOLDER"
     },
@@ -34,7 +34,7 @@
         352,
         0
       ],
-      "id": "3cfdee25-5c7f-4844-b855-5b583ef4c123",
+      "id": "ID here",
       "name": "AI Agent"
     },
     {
@@ -55,11 +55,11 @@
         224,
         224
       ],
-      "id": "9d240078-d9e1-450d-a540-25e335a43780",
+      "id": "ID here",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -72,7 +72,7 @@
         352,
         224
       ],
-      "id": "ece84c62-61cf-4a3e-b47b-e220e3af4f95",
+      "id": "ID here",
       "name": "Simple Memory"
     },
     {
@@ -80,7 +80,7 @@
         "operation": "appendOrUpdate",
         "documentId": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1cact1dQU-GJdiJg5Dr_KFzBU6JxYaUCDhiJ3bSwMuiI/edit?usp=sharing",
+          "value": "Google Sheets Link",
           "mode": "url"
         },
         "sheetName": {
@@ -88,7 +88,7 @@
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cact1dQU-GJdiJg5Dr_KFzBU6JxYaUCDhiJ3bSwMuiI/edit#gid=0"
+          "cachedResultUrl": "Google Sheets link"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -133,11 +133,11 @@
         480,
         224
       ],
-      "id": "dfa2a4ab-337c-40ad-bb34-6f65acd3699b",
+      "id": "ID here",
       "name": "Update Value",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "yHuehvOl01qMIOWi",
+          "id": "ID here",
           "name": "Google Sheets account"
         }
       }
@@ -146,7 +146,7 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1cact1dQU-GJdiJg5Dr_KFzBU6JxYaUCDhiJ3bSwMuiI/edit?gid=0#gid=0",
+          "value": "Google Sheets link",
           "mode": "url"
         },
         "sheetName": {
@@ -154,7 +154,7 @@
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cact1dQU-GJdiJg5Dr_KFzBU6JxYaUCDhiJ3bSwMuiI/edit#gid=0"
+          "cachedResultUrl": "Google Sheets Link"
         },
         "options": {}
       },
@@ -164,11 +164,11 @@
         608,
         224
       ],
-      "id": "9e1c3b80-aa93-46a9-bba2-b9d67a426a6c",
+      "id": "ID here",
       "name": "Search Inventory",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "yHuehvOl01qMIOWi",
+          "id": "ID here",
           "name": "Google Sheets account"
         }
       }
@@ -241,11 +241,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f26e53e6-9c0f-4727-baf4-95a20e87c993",
+  "versionId": "ID here",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+    "instanceId": "ID here"
   },
-  "id": "7qotqW50OTTx5vTe",
+  "id": "ID here",
   "tags": []
 }
