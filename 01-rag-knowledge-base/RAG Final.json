@@ -9,7 +9,7 @@
         0,
         0
       ],
-      "id": "8e431554-4581-4e98-a6ab-3a87231b15d2",
+      "id": "ID here",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -22,7 +22,7 @@
         656,
         432
       ],
-      "id": "b755236a-86b5-4fc2-8881-e08c022cead6",
+      "id": "ID here",
       "name": "Recursive Character Text Splitter"
     },
     {
@@ -39,7 +39,7 @@
         576,
         224
       ],
-      "id": "88dcd080-cee3-4ec3-89af-a63c3edb8986",
+      "id": "ID here",
       "name": "Default Data Loader"
     },
     {
@@ -52,11 +52,11 @@
         448,
         224
       ],
-      "id": "cde5927a-1b27-4a54-9d73-3482c943bc87",
+      "id": "ID here",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": "0njJdKZHbMLlNGKt",
+          "id": "ID here",
           "name": "OpenAi account"
         }
       }
@@ -80,11 +80,11 @@
         480,
         0
       ],
-      "id": "28649599-5d92-4f56-8594-0a295ed25e7b",
+      "id": "ID here",
       "name": "Pinecone Vector Store",
       "credentials": {
         "pineconeApi": {
-          "id": "AoVbSsv1W8NMPwZO",
+          "id": "ID here",
           "name": "PineconeApi account"
         }
       }
@@ -94,7 +94,7 @@
         "operation": "download",
         "fileId": {
           "__rl": true,
-          "value": "https://drive.google.com/file/d/1UAZAIc5iltyihDjSLjMfELvq87TMdgdK/view",
+          "value": "File ID",
           "mode": "url"
         },
         "options": {
@@ -107,11 +107,11 @@
         224,
         0
       ],
-      "id": "7f3647eb-70c3-4cdc-b7a7-193372ef9eba",
+      "id": "ID here",
       "name": "Download file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "VmqgrHDXSWc4Ksi7",
+          "id": "ID here",
           "name": "Google Drive account"
         }
       }
@@ -179,11 +179,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "5753549b-bb63-43d2-b3aa-4961504c1eac",
+  "versionId": "ID here",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1912e1ac03de9027fbcfe5dae9f36ccc280168c78f619d5d5a2889d4ea5397eb"
+    "instanceId": "ID here"
   },
-  "id": "gAV6aPsyMmqSTwkv",
+  "id": "ID here",
   "tags": []
 }
